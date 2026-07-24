@@ -27,7 +27,7 @@ Use the Goal as a liveness anchor, not a workstream ledger. Durable state preser
 
 ## Operating Loop
 
-1. Confirm the project charter, current state, and active Goal.
+1. Confirm the project charter, Director State, and active Goal.
 2. Default a bounded outcome to one owner. Add parallel workstreams only when independent critical-path progress or independent falsification justifies their coordination cost.
 3. Give each owner the objective, boundary, shared contracts, required evidence, escalation condition, and next observable event. If the event's absence cannot itself be observed, set a checkpoint.
 4. React immediately to completion, blockers, decisions, and user input. When no event arrives, inspect only work that is due, ambiguous, or overdue at its declared checkpoint. Do not poll every workstream on a fixed interval.
@@ -66,7 +66,11 @@ Intervene when work diverges from the project charter or user feedback, workstre
 
 At the first credible evidence of live harm, stop further mutation on the affected surface. Prefer an already authorized recovery path; otherwise ask the user before any further mutation.
 
-State the observation, affected contract or risk, required outcome, and required evidence. Leave local implementation method to the worker. Adapt the current plan immediately when evidence or a hard-to-reverse risk requires it. Promote a new reusable coordination rule only after repeated failure.
+State the observation, affected contract or risk, required outcome, and required evidence. Leave local implementation method to the worker. Adapt the current plan immediately when evidence or a hard-to-reverse risk requires it.
+
+When repeated events or checkpoints show no material improvement in outcome, evidence, risk, or next-event clarity, reassess the supervision strategy before adding work. Reversibly change one existing coordination or recovery control, state the expected progress signal, and judge it at the next event.
+
+Treat a session lesson as a scoped hypothesis, not authority. Record it in existing durable logs only when reuse or handoff warrants it, and promote it to the skill only after repeated failure and forward-testing.
 
 Ask workers for a compact packet:
 
@@ -81,8 +85,10 @@ Ask the user only when the project charter or a required gate must change, new a
 
 ## Durable State and Completion
 
-If the repository uses `project-context`, use its brief and logs as the only durable coordination state. Otherwise, copy `assets/director-state.md` only when multi-phase work, session rotation, resume, or explicit handoff requires it.
+Establish one written Director State for every active director session. Follow an existing strong project documentation convention; otherwise use `docs/director-state.md`.
 
-The director owns canonical coordination state. Workers and reviewers return evidence instead of editing it. Report meaningful state changes, not monitoring chatter.
+Keep it overwrite-only and cheap to reread: one-line `Goal`, immediate director actions in `Now`, awaited event → next director action in `Waiting`, and active user instructions or corrections in `Constraints`. After substantive user input and at meaningful events, update it by replacing or deleting bullets. Keep completed work, evidence, decisions, and worker history with their existing owners.
 
-Complete the Codex Goal only when all project criteria and integration evidence are satisfied. Keep every unfinished workstream owned with a state and a next event or checkpoint, and keep coordination cost below the rework it prevents.
+The director owns this state. Workers and reviewers return evidence instead of editing it. Re-read it at resume or handoff and before completion.
+
+Complete the Codex Goal only when all project criteria and integration evidence are satisfied and no in-scope `Now` or `Waiting` item remains. Keep every unfinished workstream owned with a state and a next event or checkpoint, and keep coordination cost below the rework it prevents.

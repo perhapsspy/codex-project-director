@@ -22,7 +22,7 @@ Goal은 workstream ledger가 아니라 디렉터를 계속 움직이게 하는 l
 
 ## 운영 루프
 
-1. Project charter, 현재 상태와 active Goal을 확인한다.
+1. Project charter, Director State와 active Goal을 확인한다.
 2. 하나의 bounded outcome에는 owner 한 명을 기본으로 둔다. 독립적인 critical-path 진행이나 독립 반증이 coordination 비용을 정당화할 때만 병렬 workstream을 추가한다.
 3. 각 owner에게 목표, 경계, 공유 계약, 필요한 evidence, escalation 조건과 관찰 가능한 next event를 제공한다. 그 event가 오지 않는 사실을 별도로 관찰할 수 없다면 checkpoint를 정한다.
 4. 완료, blocker, decision과 사용자 입력에는 즉시 반응한다. Event가 오지 않으면 선언된 checkpoint에 도달한 작업 중 due, ambiguous 또는 overdue인 작업만 확인한다. 모든 workstream을 고정 간격으로 polling하지 않는다.
@@ -61,7 +61,11 @@ Idle은 상태가 아니라 이상이다. 미완료 작업에 active execution, 
 
 Live harm의 신뢰할 만한 첫 증거가 나오면 영향을 받는 surface의 추가 mutation을 중단한다. 이미 승인된 복구 경로를 우선하며, 그런 경로가 없으면 추가 mutation 전에 사용자에게 묻는다.
 
-관찰한 사실, 영향을 받는 계약이나 위험, 필요한 결과와 필요한 evidence를 명시한다. Local implementation method는 작업자에게 맡긴다. Evidence나 되돌리기 어려운 위험이 요구하면 현재 계획은 즉시 조정한다. 재사용할 coordination rule은 실패가 반복된 뒤에만 승격한다.
+관찰한 사실, 영향을 받는 계약이나 위험, 필요한 결과와 필요한 evidence를 명시한다. Local implementation method는 작업자에게 맡긴다. Evidence나 되돌리기 어려운 위험이 요구하면 현재 계획을 즉시 조정한다.
+
+반복된 event나 checkpoint에도 결과, evidence, risk 또는 next event의 명확성이 실질적으로 개선되지 않으면 일을 더 추가하기 전에 감독 전략을 재검토한다. 기존 coordination 또는 recovery control 하나를 가역적으로 바꾸고, 기대하는 progress signal을 명시해 다음 event에서 판단한다.
+
+세션에서 얻은 교훈은 authority가 아닌 scoped hypothesis로 취급한다. 재사용이나 handoff 가치가 있을 때만 기존 durable log에 기록하고, 반복 실패와 forward-test를 거친 뒤에만 스킬로 승격한다.
 
 작업자에게 compact packet을 요청한다.
 
@@ -76,8 +80,10 @@ Project charter나 필수 gate를 바꿔야 하거나, 새 권한이나 product 
 
 ## Durable state와 완료
 
-저장소가 `project-context`를 사용한다면 그 brief와 logs를 유일한 durable coordination state로 사용한다. 그렇지 않으면 multi-phase work, session rotation, resume 또는 명시적 handoff에 필요할 때만 `assets/director-state.md`를 복사한다.
+각 active director session은 written Director State 하나를 정한다. 저장소에 강한 문서 규칙이 있으면 따르고, 없으면 `docs/director-state.md`를 사용한다.
 
-Canonical coordination state는 디렉터가 소유한다. 작업자와 reviewer는 이를 편집하지 않고 evidence를 반환한다. Monitoring chatter가 아니라 의미 있는 상태 변화를 보고한다.
+다시 읽는 비용이 작도록 현재 상태만 덮어쓴다. `Goal`은 한 문장, `Now`는 디렉터가 바로 할 행동, `Waiting`은 기다리는 event → 그다음 디렉터 행동, `Constraints`는 현재 적용되는 사용자 지시나 교정만 둔다. 중요한 사용자 입력을 받은 뒤와 의미 있는 event에서 bullet을 교체하거나 삭제한다. 완료 이력, evidence, decision과 worker history는 기존 owner에 둔다.
 
-모든 프로젝트 기준과 integration evidence가 충족됐을 때만 Codex Goal을 완료한다. 완료되지 않은 각 workstream에는 owner, state와 next event 또는 checkpoint가 있어야 하며 coordination 비용은 방지한 재작업보다 작아야 한다.
+이 state는 디렉터가 소유한다. 작업자와 reviewer는 편집하지 않고 evidence를 반환한다. Resume·handoff와 완료 전에 다시 읽는다.
+
+모든 프로젝트 기준과 integration evidence가 충족되고 범위 안의 `Now` 또는 `Waiting` 항목이 남지 않았을 때만 Codex Goal을 완료한다. 완료되지 않은 각 workstream에는 owner, state와 next event 또는 checkpoint가 있어야 하며 coordination 비용은 방지한 재작업보다 작아야 한다.

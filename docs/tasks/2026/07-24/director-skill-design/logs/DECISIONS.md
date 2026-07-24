@@ -69,3 +69,17 @@
 - **Decision:** 현재 runtime과 문서를 `perhapsspy/codex-project-director` 공개 저장소의 첫 release 기준선으로 배포한다.
 - **Why:** 독립 정본을 유지한 채 실제 사용 범위를 넓혀 Goal continuation, blocker 복구와 coordination 비용을 검증할 수 있다.
 - **Impact:** README는 공개 설치 경로를 안내하며 Project Legibility 편입은 후속 검증 뒤 별도로 결정한다.
+
+**2026-07-24**
+
+- **Background:** 반복된 checkpoint에도 작업 방향과 evidence가 나아지지 않을 때 디렉터가 같은 감독·검토·작업 추가를 계속할 수 있었다.
+- **Decision:** 반복된 event나 checkpoint의 실질적 무진전을 감독 전략 재검토 trigger로 삼고, 기존 조정·복구 수단 하나를 가역적으로 바꾼 뒤 다음 progress signal로 판단한다. 세션 교훈은 scoped hypothesis로 유지하고 반복 실패와 forward-test 뒤에만 스킬로 승격한다.
+- **Why:** 정체를 worker 문제로만 취급하는 sunk-cost 반복과 coordination 낭비를 줄이면서 charter·authority를 자동 변경하는 자기수정은 막기 위해서다.
+- **Impact:** 새 상태, 점수, 고정 시간·token threshold와 별도 lesson 문서는 만들지 않으며 charter, gate와 single-owner handoff 계약은 그대로 유지한다.
+
+**2026-07-24**
+
+- **Background:** 긴 director session에서 여러 사용자 지시가 대화와 Goal 사이에서 누락될 수 있었고, 기존 상태 템플릿은 계속 읽고 고치기에는 지나치게 조밀했다.
+- **Decision:** director skill이 `project-context`와 독립된 written Director State를 소유한다. 기존 문서 규칙이 없으면 `docs/director-state.md`를 쓰고 `Goal`, `Now`, `Waiting`, `Constraints`의 현재 상태만 덮어쓴다.
+- **Why:** 중요한 지시와 후속 행동을 한곳에서 값싸게 다시 읽으면서 항목을 쉽게 추가, 교체, 삭제하기 위해서다.
+- **Impact:** 완료 이력, evidence, decision, worker 상태 표는 이 문서에 축적하지 않으며 `project-context`는 선택적인 저장 위치와 주변 이력만 제공한다.
