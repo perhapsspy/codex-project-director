@@ -6,8 +6,6 @@
 
 A director skill for driving multiple Codex tasks or sessions toward one verified project outcome. The director coordinates goals, priorities, cross-task contracts, evidence, and recovery while workers retain implementation.
 
-This repository is the independent canonical source. It is not yet included in Project Legibility.
-
 ## Quick Start
 
 Use `skill-installer` to install `skills/codex-project-director` from this repository.
@@ -29,8 +27,6 @@ You can also invoke `$codex-project-director` directly.
 - Multiple tasks or sessions share one project outcome and completion criteria
 - Progress, cross-task contracts, dependencies, and blockers need active coordination
 - Completion claims must be integrated into one evidence-backed project decision
-
-Do not use it for one local implementation, debugging task, review, or status summary. It applies when the user explicitly designates the current session as the director or supervisor, and can also be invoked directly as `$codex-project-director`.
 
 ## More
 
