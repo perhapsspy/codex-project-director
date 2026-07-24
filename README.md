@@ -8,13 +8,11 @@
 
 ## 빠른 시작
 
-`skill-installer`로 이 저장소의 `skills/codex-project-director`를 설치합니다.
-
-```text
-$skill-installer로 perhapsspy/codex-project-director 저장소의 skills/codex-project-director를 설치해줘.
+```bash
+npx skills add perhapsspy/codex-project-director
 ```
 
-그다음 새 세션을 director session으로 명시 지정합니다.
+설치한 뒤 새 세션을 director session으로 명시 지정합니다.
 
 ```text
 이 세션을 디렉터 세션으로 운영해. 하나의 Codex Goal을 시작하고 이 여러 작업을 검증된 통합 완료까지 지휘해줘.

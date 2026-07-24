@@ -8,13 +8,11 @@ A director skill for driving multiple Codex tasks or sessions toward one verifie
 
 ## Quick Start
 
-Use `skill-installer` to install `skills/codex-project-director` from this repository.
-
-```text
-Use $skill-installer to install skills/codex-project-director from perhapsspy/codex-project-director.
+```bash
+npx skills add perhapsspy/codex-project-director
 ```
 
-Then explicitly designate a fresh session as the director.
+After installation, explicitly designate a fresh session as the director.
 
 ```text
 Run this session as the director. Start one Codex Goal and direct these tasks through verified, integrated completion.
