@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Project Director"
+  short_description: "Direct multiple Codex tasks toward one verified outcome"
+  default_prompt: "Use $codex-project-director to coordinate these Codex tasks through verified completion."
