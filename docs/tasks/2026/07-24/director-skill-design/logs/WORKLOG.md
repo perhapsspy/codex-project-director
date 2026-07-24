@@ -14,3 +14,4 @@
 - 실제 설치 세션 회고와 최소성 재검토를 거쳐 최신 사용자 승인 charter의 권한 우선순위와 첫 live harm의 mutation stop만 runtime에 승격했다. 사건별 taxonomy와 별도 token·Goal 절차는 제외했으며 한영 source와 로컬 설치본 동기화, 독립 의미 검토와 전체 형식 검증을 통과했다.
 - `allow_implicit_invocation`을 활성화하고 natural-language role designation과 direct `$skill` invocation을 precise trigger에 함께 명시했다. 격리 forward-test에서 두 진입점, 단순 리뷰 exclusion, charter/live-harm guard가 통과했으며 첫 검사에서 발견한 direct-invocation 문언 불일치도 교정했다. 작은 synthetic director 검사 두 건이 12,225·6,294 tokens를 사용해 단일 국소 작업 exclusion과 실제 coordination-cost 검증 필요성을 확인했다.
 - 공개 배포 승인에 따라 README 한영의 설치 진입점과 공개 상태를 갱신했다. Skill 형식, openai.yaml 정합성, 한영 runtime 의미, README 링크, project-context shape, source·로컬 설치본 일치, secret·절대경로 scan과 git diff hygiene를 독립 검증해 release blocker가 없음을 확인했다.
+- GitHub 공개 저장소 `perhapsspy/codex-project-director`를 만들고 release 기준선 commit `5b7b44e`를 `main`에 push했다. 설치본이나 Project Legibility plugin cache는 변경하지 않았다.

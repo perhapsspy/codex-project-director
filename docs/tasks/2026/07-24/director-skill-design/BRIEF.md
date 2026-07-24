@@ -18,7 +18,7 @@
 
 # Current State
 
-자연어 지정, `$skill` 직접 호출, 단순 리뷰 exclusion, charter 충돌과 live-harm forward-test가 통과했고 source와 로컬 설치본이 일치한다. 독립 정본의 공개 배포가 승인됐으며 Project Legibility 편입은 보류 상태다.
+자연어 지정, `$skill` 직접 호출, 단순 리뷰 exclusion, charter 충돌과 live-harm forward-test가 통과했고 source와 로컬 설치본이 일치한다. 독립 정본은 `perhapsspy/codex-project-director`에 공개됐으며 Project Legibility 편입은 보류 상태다.
 
 # Next Step
 
