@@ -10,23 +10,22 @@
 
 # Current Understanding
 
-- 디렉터의 효과는 상위 모델보다 목적 함수, 가시 범위, 행동 권한과 실패 비용이 다른 입장에서 나온다.
-- 디렉터는 목표·우선순위·교차 계약·사용자 피드백·통합을 소유하고, 작업자는 국소 실행을, 리뷰어는 독립 반증을 소유해야 한다.
-- `직접 구현하지 않음`은 수동 대기가 아니다. 미완료 idle과 blocker를 발견하면 현재 작업자를 돕고, 보조 작업자를 붙이고, 독립 의존성을 분리하거나, 명시적으로 새 owner에게 작업을 이전한다.
-- 디렉터가 product code나 국소 디버깅을 직접 소유하면 역할 분리와 토큰 효율이 함께 무너진다.
-- 감독은 고정 polling이 아니라 `RUNNING`, `WAITING`, `NEEDS_DECISION`, `BLOCKED`, `COMPLETE` 상태 전이에 반응해야 한다.
-- durable state는 기존 `project-context`가 있으면 그것만 사용한다. 없을 때도 다단계 handoff나 session rotation이 실제로 필요한 경우에만 조건부 템플릿을 사용한다.
+- runtime 계약은 `skills/codex-project-director/SKILL.md`, 설계 방향과 변경 기준은 `docs/skill-direction.md`가 소유한다.
+- 실제 설치 세션 회고에서 사용자 charter보다 Goal·검토 결과가 앞서는 문제와 live harm 뒤 forward mutation을 멈추는 경계가 부족한 것으로 확인됐다.
+- 사건별 taxonomy나 새 절차 대신 authority precedence와 live-harm stop 두 경계만 runtime에 승격한다.
+- 자연어로 director session을 명시 지정한 경우에도 적용되도록 precise trigger와 implicit invocation을 함께 사용한다.
+- 작은 synthetic director 검증도 12,225·6,294 tokens를 사용했으므로 단일 국소 작업 exclusion과 coordination-cost 관찰이 중요하다.
 
 # Current State
 
-독립 정본 저장소와 첫 스킬 초안, 조건부 상태 템플릿이 준비됐다. 아직 실제 director 요청에 대한 forward-test와 trigger 검증, 기존 세션 대비 행동 비교는 수행하지 않았다. Project Legibility 편입은 보류 상태다.
+자연어 지정, `$skill` 직접 호출, 단순 리뷰 exclusion, charter 충돌과 live-harm forward-test가 통과했고 source와 로컬 설치본이 일치한다. 독립 정본의 공개 배포가 승인됐으며 Project Legibility 편입은 보류 상태다.
 
 # Next Step
 
-첫 초안을 실제 디렉터 사용 사례에 적용해 작업자 복구, role collapse, idle 처리, 증거 packet과 토큰 경계가 의도대로 작동하는지 forward-test하고 필요한 문장만 조정한다.
+실제 multiple-workstream director 사례에서 Goal continuation, blocker 복구와 coordination 비용을 forward-test한다.
 
 # Working Boundary
 
-- `codex-project-director/SKILL.md`
-- `codex-project-director/assets/director-state.md`
-- `codex-project-director/agents/openai.yaml`
+- `skills/codex-project-director/SKILL.md`
+- `docs/skill-direction.md`
+- `README.md`

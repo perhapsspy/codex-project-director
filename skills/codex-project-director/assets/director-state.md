@@ -6,7 +6,7 @@
 
 # Workstreams
 
-| Outcome | Owner | Status | Next event | Evidence |
+| Outcome | Owner | Status | Next event / checkpoint | Evidence |
 |---|---|---|---|---|
 
 # Cross-Task Contracts
