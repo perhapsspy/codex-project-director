@@ -18,3 +18,8 @@
 - 반복된 event·checkpoint의 무진전을 감독 전략 점검으로 연결하고, 기존 control 하나의 가역적 변경과 다음 progress signal 판정을 runtime 한영과 설계 방향에 추가했다. 독립 검증에서 기존 charter·owner·monitoring·live-harm 경계와의 정합성을 확인했고, 격리 forward-test는 추가 agent 없이 상태 checkpoint를 통합 evidence checkpoint로 바꾸는 작은 조정으로 응답했다.
 - 긴 director session의 지시 누락을 막는 Director State를 `project-context`와 독립된 runtime 계약으로 바꿨다. 기본 `docs/director-state.md`에는 `Goal`, `Now`, `Waiting`, `Constraints`의 현재 상태만 덮어쓰고 표·완료 이력·evidence·worker history는 제외했다. 딥리뷰에서 네 칸의 충분성을 확인하고 매 지시 전 재독 의무를 의미 있는 event 중심으로 낮췄으며 skill, project-context shape와 diff 검증을 통과했다.
 - Director State의 네 heading을 runtime 계약 안에 직접 정의하고 기본 경로를 `docs/director-state.md`로 정리해 별도 asset을 제거했다. 현재 정본 문서의 `project-context`·Project Legibility 비교 표현은 최종 기능과 검증 gate를 바로 서술하도록 다듬었다.
+
+**2026-07-25**
+
+- 위험한 실행과 격리된 가역적 작업의 검증 주기를 분리하고, 작업 묶음 계약, 이정표 검토, 승인 사실별 정본 증거와 반복 실패 시 재정의를 한영 실행 계약에 통합했다. 첫 사전 검증에서 관련 범위 검증 생략과 검토 중복을 발견해 문구를 교정했고, 적대적·최소성·운영 관점의 검토 뒤 고정 횟수와 과도한 필드를 제거했다. 다섯 반례 사전 검증은 위험 관문 유지, 숨은 결합 직렬화, 최종 변경분 재검증, 모순 증거 차단과 영향받는 작업만 재정의하는 행동을 모두 선택했다.
+- 실제 디렉터 사용에서 현재 역할 분리와 조정 흐름이 유용하다는 사용자 확인을 받았다. 설치본보다 최신인 작업 독립성·검증 주기·증거 소유 계약을 최종 후보로 동결하고, 한영 실행 계약, 공식 스킬 형식, project-context 작업 형태와 변경분 검사를 다시 통과시켜 Project Legibility 편입 준비를 마쳤다.

@@ -1,30 +1,31 @@
 # Goal
 
-실제 Codex 디렉터 세션에서 확인된 장점과 실패를 바탕으로, 여러 작업을 프로젝트 완료까지 지휘하면서도 직접 구현·과잉 감시·과대 절차로 흐르지 않는 재사용 가능한 스킬을 만든다.
+실제 Codex 디렉터 세션의 장점과 실패를 바탕으로, 여러 작업을 프로젝트 완료까지 이끌면서 직접 구현·과잉 감시·과대 절차로 흐르지 않는 재사용 가능한 스킬을 만든다.
 
 # Scope
 
-- 디렉터, 작업자, 리뷰어의 입장과 책임을 분리한다.
-- 상태 전이, 개입, 증거, 복구, handoff의 최소 운영 계약을 정한다.
-- 실제 director session에서 trigger, continuation, recovery와 coordination cost를 검증한다.
+- 디렉터, 작업자와 리뷰어의 책임을 분리한다.
+- 상태 전이, 개입, 증거, 복구와 인계의 최소 운영 계약을 정한다.
+- 실제 디렉터 세션에서 호출, 지속 실행, 복구와 조정 비용을 검증한다.
 
 # Current Understanding
 
-- runtime 계약은 `skills/codex-project-director/SKILL.md`, 설계 방향과 변경 기준은 `docs/skill-direction.md`가 소유한다.
-- 실제 설치 세션 회고에서 사용자 charter보다 Goal·검토 결과가 앞서는 문제와 live harm 뒤 forward mutation을 멈추는 경계가 부족한 것으로 확인됐다.
-- runtime은 authority precedence와 live-harm stop의 공통 경계를 소유한다.
-- 자연어로 director session을 명시 지정한 경우에도 적용되도록 precise trigger와 implicit invocation을 함께 사용한다.
-- 작은 synthetic director 검증도 12,225·6,294 tokens를 사용했으므로 단일 국소 작업 exclusion과 coordination-cost 관찰이 중요하다.
-- 반복된 event나 checkpoint에도 진전이 없을 때는 작업을 더 추가하기 전에 감독 전략을 작은 가역적 변경으로 시험하고, 세션 교훈은 검증 전까지 scoped hypothesis로 유지한다.
-- Director State는 현재 작업 queue이며, 기본 위치는 `docs/director-state.md`다. `Goal`, `Now`, `Waiting`, `Constraints`만 덮어써 재독 비용을 제한한다.
+- 배포되는 실행 계약은 `skills/codex-project-director/SKILL.md`, 설계 방향과 변경 기준은 `docs/skill-direction.md`가 소유한다.
+- 실제 설치 세션에서 사용자 승인 기준보다 지속 목표와 검토 결과가 앞서고, 실제 피해 뒤에도 변경을 이어간 실패가 확인됐다.
+- 자연어 역할 지정과 `$codex-project-director` 직접 호출을 모두 지원한다.
+- 작은 합성 검증도 12,225·6,294 토큰을 사용했으므로 단일 작업 제외와 조정 비용 제한이 중요하다.
+- 반복된 사건에도 진전이 없으면 작업을 더하기 전에 감독 방식을 작은 가역적 변경으로 시험하고, 세션 교훈은 검증 전까지 범위가 정해진 가설로 유지한다.
+- 디렉터 상태 문서는 현재 작업 목록이며 기본 위치는 `docs/director-state.md`다. `Goal`, `Now`, `Waiting`, `Constraints`만 덮어써 다시 읽는 비용을 제한한다.
+- 검증 주기는 승인 주장과 실행 영향으로 정한다. 격리된 가역적 작업은 좁게 반복하고, 관련 변경을 묶어 검토한 최종 변경분에 필요한 넓은 검증을 수행한다.
+- 승인 사실은 정본 증거 출처 하나가 소유하며 모순되는 독립 증거는 완료를 막는다. 같은 경계가 새 증거 없이 반복되면 해당 작업의 가정과 검증 단위를 다시 정하고 다른 독립 작업은 계속 진행한다.
 
 # Current State
 
-자연어 지정, `$skill` 직접 호출, 단순 리뷰 exclusion, charter 충돌, live-harm과 adaptive supervision forward-test가 통과했다. 최소 Director State는 형식·최소성 검토를 통과했고 실제 session 검증이 남아 있다.
+적대적·최소성·운영 관점의 검토와 실제 디렉터 사용을 반영해 위험 분류, 검토 주기, 증거 최신성, 반복 실패 범위와 작업 독립성 계약을 확정했다. 한영 실행 계약, 설계 문서와 공개 진입점이 일치하며 형식·작업 형태·변경분 검증을 통과했다.
 
 # Next Step
 
-실제 multiple-workstream director 사례에서 모든 중요한 사용자 지시가 짧은 Director State에 귀속되고 event마다 현재형으로 정리되는지 확인한다.
+최종 `main` 커밋을 Project Legibility가 고정해 통합 플러그인의 실사용 검토를 이어간다.
 
 # Working Boundary
 

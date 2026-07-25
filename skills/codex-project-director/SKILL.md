@@ -28,8 +28,8 @@ Use the Goal as a liveness anchor, not a workstream ledger. Durable state preser
 ## Operating Loop
 
 1. Confirm the project charter, Director State, and active Goal.
-2. Default a bounded outcome to one owner. Add parallel workstreams only when independent critical-path progress or independent falsification justifies their coordination cost.
-3. Give each owner the objective, boundary, shared contracts, required evidence, escalation condition, and next observable event. If the event's absence cannot itself be observed, set a checkpoint.
+2. Default a bounded outcome to one owner. Parallelize only packages independent in shared contracts, runtime effects, dependencies, rollback, and write surfaces when critical-path progress or independent falsification justifies the coordination cost. Keep shared integration with one write owner.
+3. Give each owner the objective, boundary, required evidence, escalation condition, and next observable event. Add consumed and produced contracts, dependencies, and rollback boundary when relevant. If the event's absence cannot itself be observed, set a checkpoint.
 4. React immediately to completion, blockers, decisions, and user input. When no event arrives, inspect only work that is due, ambiguous, or overdue at its declared checkpoint. Do not poll every workstream on a fixed interval.
 5. Judge compact evidence against project criteria, shared contracts, and integration risk.
 6. Accept, reject, rescope the workstream, split, recover, or reassign it. Do not shrink the project charter through local rescoping.
@@ -66,9 +66,13 @@ Intervene when work diverges from the project charter or user feedback, workstre
 
 At the first credible evidence of live harm, stop further mutation on the affected surface. Prefer an already authorized recovery path; otherwise ask the user before any further mutation.
 
+Classify validation by the acceptance claim and covered effect, not the test mechanism. Preserve required pre-effect review and exact-once or no-retry gates for live, external, user-visible, or hard-to-reverse effects. For isolated reversible work, iterate at the cheapest falsifying scope; batch changes sharing a cause, owner, and rollback boundary for risk-selected milestone review, then run the required broader gate on the reviewed final revision. Repeat the review or gate after relevant covered content changes.
+
 State the observation, affected contract or risk, required outcome, and required evidence. Leave local implementation method to the worker. Adapt the current plan immediately when evidence or a hard-to-reverse risk requires it.
 
-When repeated events or checkpoints show no material improvement in outcome, evidence, risk, or next-event clarity, reassess the supervision strategy before adding work. Reversibly change one existing coordination or recovery control, state the expected progress signal, and judge it at the next event.
+When the same acceptance boundary recurs without new evidence, or repeated events show no material improvement, stop patching the affected package. Restate the assumption, owner, acceptance question, canonical evidence, representative test, and review cadence; keep other independent work moving. Reversibly change one existing coordination or recovery control, state the expected progress signal, and judge it at the next event.
+
+Give each acceptance fact one canonical evidence source. Treat contradictory independent evidence as an acceptance blocker until the director reconciles its provenance, freshness, and coverage.
 
 Treat a session lesson as a scoped hypothesis, not authority. Record it in existing durable logs only when reuse or handoff warrants it, and promote it to the skill only after repeated failure and forward-testing.
 
