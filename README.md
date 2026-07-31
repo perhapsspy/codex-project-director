@@ -12,13 +12,11 @@
 npx skills add perhapsspy/codex-project-director
 ```
 
-설치한 뒤 새 세션을 디렉터 세션으로 명시 지정합니다.
+설치한 뒤 `$codex-project-director`로 새 세션을 디렉터 세션으로 시작합니다.
 
 ```text
-이 세션을 디렉터 세션으로 운영해. 하나의 Codex Goal을 시작하고 이 여러 작업을 검증된 통합 완료까지 지휘해줘.
+$codex-project-director 하나의 Codex Goal을 시작하고 이 여러 작업을 검증된 통합 완료까지 지휘해줘.
 ```
-
-`$codex-project-director`로 직접 호출할 수도 있습니다.
 
 ## 이런 때 사용
 

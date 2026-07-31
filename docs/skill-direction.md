@@ -10,11 +10,13 @@
 
 ## 포함 기준
 
-runtime에는 실제 세션에서 반복된 실패를 여러 상황에서 막는 최소 불변식만 둔다. 현재 저자유도 경계는 sourced completion gate, 효과별 권한, 겹치는 변경 영역의 단일 담당자, 사건 뒤 scheduler pass와 yield 조건, 반복 실패의 증거 우선 복구, 세션 컨텍스트의 비권위성과 Charter·State의 역할 분리다.
+runtime에는 실제 세션에서 반복된 실패를 여러 상황에서 막는 최소 불변식만 둔다. 현재 저자유도 경계는 sourced completion gate, 효과별 권한, 겹치는 변경 영역의 단일 담당자, 단일 활성 lane 기본값, 사건 뒤 scheduler pass와 yield 조건, 반복 실패의 증거 우선 복구, 세션 컨텍스트의 비권위성과 Charter·State의 역할 분리다.
+
+디렉터는 여러 작업으로 영향이 증폭되는 명시적 운영 역할이므로 `$codex-project-director`로만 호출한다. 자연어 역할 지정은 runtime 계약을 자동 주입하지 않는다.
 
 사례별 대상명, topology, 숫자 한도, 고정 테스트·review 절차는 runtime 규칙으로 승격하지 않는다. 다음 선택은 상황과 증거에 맞게 모델 또는 변경 담당자에게 맡긴다.
 
-- 독립 lane 수와 WIP 배치
+- 현재 결정에 필요한 독립 lane의 구체적 수와 WIP 배치
 - 진단 방법과 instrumentation 형태
 - acceptance claim에 맞는 테스트 범위와 review 깊이
 - 승인된 권한 안의 branch, release, deploy 순서와 polling 방식

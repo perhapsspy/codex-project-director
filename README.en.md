@@ -12,13 +12,11 @@ A director skill for driving multiple Codex tasks or sessions toward one verifie
 npx skills add perhapsspy/codex-project-director
 ```
 
-After installation, explicitly designate a fresh session as the director.
+After installation, start a fresh director session with `$codex-project-director`.
 
 ```text
-Run this session as the director. Start one Codex Goal and direct these tasks through verified, integrated completion.
+Use $codex-project-director to start one Codex Goal and direct these tasks through verified, integrated completion.
 ```
-
-You can also invoke `$codex-project-director` directly.
 
 ## Use When
 
